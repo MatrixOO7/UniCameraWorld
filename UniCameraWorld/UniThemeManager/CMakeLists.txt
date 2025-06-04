@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.24)
+
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(Qt6 REQUIRED COMPONENTS Quick)
+
+qt_standard_project_setup(REQUIRES 6.8)
+
+#set(QML_SINGLETON_FILES
+#    # Add singleton files here
+#    ThemeManager.qml
+#)
+
+#set_source_files_properties(
+#    ${QML_SINGLETON_FILES}
+#    PROPERTIES
+#        QT_QML_SINGLETON_TYPE TRUE
+#)
+
+qt_add_qml_module(UniThemeManager
+    URI UniThemeManager
+    VERSION 1.0
+    QML_FILES
+    SOURCES
+        # This class just to show how you can add C++ to the same QML Module.
+        UniThemeManager.h
+        UniThemeManager.cpp
+)
+
+target_link_libraries(UniThemeManager
+    PRIVATE
+        Qt6::Quick
+)

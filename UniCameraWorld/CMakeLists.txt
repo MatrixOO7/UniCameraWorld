@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick)
 
+add_subdirectory (UniThemeManager)
+
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appUniCameraWorld
@@ -32,6 +34,8 @@ set_target_properties(appUniCameraWorld PROPERTIES
 
 target_link_libraries(appUniCameraWorld
     PRIVATE Qt6::Quick
+    Qt6:Quick
+    UniThemeManager
 )
 
 include(GNUInstallDirs)
