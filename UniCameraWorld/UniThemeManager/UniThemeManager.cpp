@@ -1,5 +1,5 @@
 #include "UniThemeManager.h"
 
-UniThemeManager::UniThemeManager ( QObject *parent ) {
+UniThemeManager::UniThemeManager ( QObject *parent ) : QObject (parent) {
 
 }

@@ -17,7 +17,7 @@ qt_standard_project_setup(REQUIRES 6.8)
 #        QT_QML_SINGLETON_TYPE TRUE
 #)
 
-qt_add_qml_module(UniThemeManager
+qt_add_qml_module(uniThemeManager
     URI UniThemeManager
     VERSION 1.0
     QML_FILES
@@ -27,7 +27,7 @@ qt_add_qml_module(UniThemeManager
         UniThemeManager.cpp
 )
 
-target_link_libraries(UniThemeManager
+target_link_libraries(uniThemeManager
     PRIVATE
-        Qt6::Quick
+    Qt6::Quick
 )

@@ -8,15 +8,14 @@ class UniThemeManager : public QObject {
     Q_OBJECT
 
 public:
-    UniThemeManager ( QObject *parent = nullptr );
+    explicit UniThemeManager ( QObject *parent = nullptr );
 
 signals:
 
 private slots:
 
-
-
 private:
+
 };
 
 #endif
