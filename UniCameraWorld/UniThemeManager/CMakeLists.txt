@@ -22,7 +22,6 @@ qt_add_qml_module(uniThemeManager
     VERSION 1.0
     QML_FILES
     SOURCES
-        # This class just to show how you can add C++ to the same QML Module.
         UniThemeManager.h
         UniThemeManager.cpp
 )

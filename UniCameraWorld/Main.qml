@@ -10,52 +10,57 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
+    property double sideMenuWidth: root.width / 3
+
     Drawer{
         id: sideMenu
         height: root.height
-        width: root.width / 3
+        width: root.sideMenuWidth
         ColumnLayout {
             id: sideMenuLayout
+            anchors.fill: parent
             spacing: 10
             Text {
+                Layout.preferredHeight: 10
+                Layout.fillWidth: true
                 id:sideMenuTitleText
                 text: "Menu"
             }
-            Button {
-                id: idPhoto
-                Layout.preferredWidth: root.width / 3
-                Text {
-                    text: "Foto výbava"
+
+            ColumnLayout {
+                Layout.fillHeight: true
+                UniButton {
+                    Layout.fillWidth: parent
+                    Layout.preferredHeight: 50
+                    label: "Foto výbava"
                 }
-            }
-            Button {
-                Layout.preferredWidth: root.width / 3
-                Text {
-                    text: "Planovani"
+
+                UniButton {
+                    Layout.fillWidth: parent
+                    Layout.preferredHeight: 50
+                    label: "Planovani"
                 }
             }
 
-            Button {
-                id: idAccoun
-                Layout.preferredWidth: root.width / 3
-                Text {
-                    text: "Účet"
+            ColumnLayout {
+                Layout.preferredHeight: 50
+                UniButton {
+                    Layout.fillWidth: parent
+                    Layout.preferredHeight: 50
+                    label: "Nastaveni tématu"
                 }
-            }
 
-            Button {
-                id: appThemeDSelect
-                Layout.preferredWidth: root.width / 3
-                Text {
-                    text: "Nastavení temata"
+                UniButton {
+                    Layout.fillWidth: parent
+                    Layout.preferredHeight: 50
+                    label: "Nastaveni účtu"
                 }
-            }
 
-            Button {
-                id: idConfig
-                Layout.preferredWidth: root.width / 3
-                Text {
-                    text: "Nastavení"
+                UniButton {
+                    Layout.fillWidth: parent
+                    Layout.preferredHeight: 50
+                    label: "Nastaveni aplikace"
+                    enabled: false
                 }
             }
         }
