@@ -33,6 +33,9 @@ Window {
                     Layout.fillWidth: parent
                     Layout.preferredHeight: 50
                     label: "Foto výbava"
+                    onIsClicked: {
+                        console.debug ("Test clicked")
+                    }
                 }
 
                 UniButton {
@@ -48,19 +51,29 @@ Window {
                     Layout.fillWidth: parent
                     Layout.preferredHeight: 50
                     label: "Nastaveni tématu"
+                    onIsClicked: {
+                        appSetting.enabled = false
+                    }
                 }
 
                 UniButton {
                     Layout.fillWidth: parent
                     Layout.preferredHeight: 50
                     label: "Nastaveni účtu"
+                    onIsClicked: {
+                        appSetting.enabled = true
+                    }
                 }
 
                 UniButton {
+                    id: appSetting
                     Layout.fillWidth: parent
                     Layout.preferredHeight: 50
                     label: "Nastaveni aplikace"
-                    enabled: false
+                   // enabled: false
+                    onIsClicked: {
+                        console.debug ("Test disabled clicked")
+                    }
                 }
             }
         }

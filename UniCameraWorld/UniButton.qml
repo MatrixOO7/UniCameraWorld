@@ -1,5 +1,4 @@
 import QtQuick 2.15
-import QtQuick.Controls
 import QtQuick.Layouts
 
 Rectangle {
@@ -16,12 +15,17 @@ Rectangle {
     property color clickedColor: "blue"
     property color enabledColor: "#C6C6C6"
 
+    property color actColor: backGroundColor
+
 
     property int fontSize: 14
     property int borderSize: 2
     property int buttonRadius: 6
 
     signal isClicked()
+    signal isLongPress()
+    signal isPressed()
+    signal isReleased()
 
 
     height: 20
@@ -66,27 +70,41 @@ Rectangle {
         enabled: root.enabled
 
         onEntered: {
-            root.color = root.hoverColor
+            root.actColor = root.hoverColor
         }
 
         onExited: {
-            root.color = root.backGroundColor
+            root.actColor = root.backGroundColor
         }
 
         onPressed: {
-            root.color = root.clickedColor
+            root.actColor = root.clickedColor
+            root.isPressed()
         }
 
         onReleased: {
-            root.color = root.backGroundColor
+            root.actColor = root.backGroundColor
+            root.isReleased()
         }
 
         onClicked: {
             root.isClicked()
         }
+
+        onPressAndHold:{
+            root.isLongPress()
+        }
     }
 
     onEnabledChanged: {
-        root.color = root.enabledColor
+        if ( enabled === false  ) {
+            root.color = root.enabledColor
+        } else {
+            root.color = root.actColor
+        }
+    }
+
+    onActColorChanged: {
+        root.color = root.actColor
     }
 }

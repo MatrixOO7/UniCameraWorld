@@ -3,19 +3,24 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QColor>
 
 class UniThemeManager : public QObject {
     Q_OBJECT
 
+    Q_PROPERTY(QColor btnBackGround READ btnBackGround WRITE setBtnBackGround NOTIFY btnBackGroundChanged FINAL)
+
 public:
     explicit UniThemeManager ( QObject *parent = nullptr );
+    QColor btnBackGround () const;
+
+    void setBtnBackGround ( const QColor newColor);
 
 signals:
-
-private slots:
+    void btnBackGroundChanged();
 
 private:
-
+    QColor m_btnBackGround;
 };
 
 #endif
