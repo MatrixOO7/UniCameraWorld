@@ -24,6 +24,8 @@ qt_add_qml_module(uniThemeManager
     SOURCES
         UniThemeManager.h
         UniThemeManager.cpp
+
+
 )
 
 target_link_libraries(uniThemeManager

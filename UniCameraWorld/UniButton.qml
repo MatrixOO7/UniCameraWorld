@@ -1,15 +1,18 @@
 import QtQuick 2.15
 import QtQuick.Layouts
+import ThemeManager
 
 Rectangle {
     id: root
+    clip: true
+
     property string imgPath: ""
     property string label: "label"
 
 
     /*_____________[Colors]______________*/
     property color textColor: "#666666"
-    property color backGroundColor: "magenta"// "#121212"
+    property color backGroundColor: ThemeManager.btnBackGround
     property color hoverColor: "red"
     property color borderColor: "green"
     property color clickedColor: "blue"
@@ -30,6 +33,9 @@ Rectangle {
 
     height: 20
     width: 200
+
+
+
 
     Behavior on color {
        ColorAnimation {

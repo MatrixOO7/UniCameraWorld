@@ -12,15 +12,15 @@ class UniThemeManager : public QObject {
 
 public:
     explicit UniThemeManager ( QObject *parent = nullptr );
-    QColor btnBackGround () const;
+    QColor btnBackGround ();
 
-    void setBtnBackGround ( const QColor newColor);
+    void setBtnBackGround ( const QColor newColor );
 
 signals:
     void btnBackGroundChanged();
 
 private:
-    QColor m_btnBackGround;
+    QColor m_btnBackGround = QColor("#FFFF00");
 };
 
 #endif
