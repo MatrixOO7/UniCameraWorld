@@ -11,19 +11,22 @@ Rectangle {
 
 
     /*_____________[Colors]______________*/
-    property color textColor: "#DDDDDD"
+    property color textColor: "#666666"
     property color backGroundColor: ThemeManager.btnBackGroundColor
     property color hoverColor: ThemeManager.btnHoverColor
-    property color borderColor: "#555555"
-    property color clickedColor: "#444444"
+    property color borderColor: "green"
     property color enabledColor: "#C6C6C6"
 
     property color actColor: backGroundColor
 
+    property bool enableHover: false
+    property bool isBold: false
 
     property int fontSize: 14
     property int borderSize: 2
     property int buttonRadius: 6
+
+
 
     signal isClicked()
     signal isLongPress()
@@ -34,11 +37,11 @@ Rectangle {
     height: 20
     width: 200
 
-
     Behavior on color {
-       ColorAnimation {
-           duration: 500
-       }
+
+        ColorAnimation {
+            duration: 500
+        }
     }
 
     radius: buttonRadius
@@ -63,6 +66,7 @@ Rectangle {
             text: root.label
             color: root.textColor
             font.pixelSize: root.fontSize
+            font.bold: root.isBold
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -70,7 +74,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        hoverEnabled: true
+        hoverEnabled: root.enableHover
         enabled: root.enabled
 
         onEntered: {
@@ -79,24 +83,6 @@ Rectangle {
 
         onExited: {
             root.actColor = root.backGroundColor
-        }
-
-        onPressed: {
-            root.actColor = root.clickedColor
-            root.isPressed()
-        }
-
-        onReleased: {
-            root.actColor = root.backGroundColor
-            root.isReleased()
-        }
-
-        onClicked: {
-            root.isClicked()
-        }
-
-        onPressAndHold:{
-            root.isLongPress()
         }
     }
 

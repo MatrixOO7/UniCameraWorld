@@ -26,8 +26,8 @@ signals:
     void btnHoverColorChanged();
 
 private:
-    QColor m_btnBackGroundColor = QColor("#FFFF00");
-    QColor m_btnHoverColor = QColor("#66FF00");
+    QColor m_btnBackGroundColor = QColor("#2A2A2A");
+    QColor m_btnHoverColor = QColor("#383838");
     QColor m_btnBorderColor = QColor("#FFFF00");
     QColor m_btnClickedColor = QColor("#FFFF00");
     QColor m_btnEnabledColor = QColor("#FFFF00");

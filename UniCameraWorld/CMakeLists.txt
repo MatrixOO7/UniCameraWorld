@@ -20,6 +20,10 @@ qt_add_qml_module(appUniCameraWorld
     QML_FILES
         Main.qml
         UniButton.qml
+        QML_FILES UniLabel.qml
+
+    RESOURCES
+        Resource/Image/logo.png
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
