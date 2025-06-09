@@ -4,11 +4,20 @@ UniThemeManager::UniThemeManager ( QObject *parent ) : QObject (parent) {
 
 }
 
-QColor UniThemeManager::btnBackGround () {
-    return m_btnBackGround;
+QColor UniThemeManager::btnBackGroundColor () {
+    return m_btnBackGroundColor;
 }
 
 
-void UniThemeManager::setBtnBackGround( const QColor newColor ) {
-    m_btnBackGround = newColor;
+void UniThemeManager::setBtnBackGroundColor( const QColor newColor ) {
+    m_btnBackGroundColor = newColor;
+}
+
+QColor UniThemeManager::btnHoverColor () {
+    return m_btnHoverColor;
+}
+
+
+void UniThemeManager::setBtnHoverColor( const QColor newColor ) {
+    m_btnHoverColor = newColor;
 }

@@ -12,8 +12,8 @@ Rectangle {
 
     /*_____________[Colors]______________*/
     property color textColor: "#666666"
-    property color backGroundColor: ThemeManager.btnBackGround
-    property color hoverColor: "red"
+    property color backGroundColor: ThemeManager.btnBackGroundColor
+    property color hoverColor: ThemeManager.btnHoverColor
     property color borderColor: "green"
     property color clickedColor: "blue"
     property color enabledColor: "#C6C6C6"

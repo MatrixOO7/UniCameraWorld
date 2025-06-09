@@ -8,19 +8,34 @@
 class UniThemeManager : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(QColor btnBackGround READ btnBackGround WRITE setBtnBackGround NOTIFY btnBackGroundChanged FINAL)
+    Q_PROPERTY(QColor btnBackGroundColor READ btnBackGroundColor WRITE setBtnBackGroundColor NOTIFY btnBackGroundColorChanged FINAL)
+    Q_PROPERTY(QColor btnHoverColor READ btnHoverColor WRITE setBtnHoverColor NOTIFY btnHoverColorChanged FINAL)
 
 public:
     explicit UniThemeManager ( QObject *parent = nullptr );
-    QColor btnBackGround ();
+    QColor btnBackGroundColor ();
 
-    void setBtnBackGround ( const QColor newColor );
+    void setBtnBackGroundColor ( const QColor newColor );
+
+    QColor btnHoverColor ();
+
+    void setBtnHoverColor ( const QColor newColor );
 
 signals:
-    void btnBackGroundChanged();
+    void btnBackGroundColorChanged();
+    void btnHoverColorChanged();
 
 private:
-    QColor m_btnBackGround = QColor("#FFFF00");
+    QColor m_btnBackGroundColor = QColor("#FFFF00");
+    QColor m_btnHoverColor = QColor("#66FF00");
+    QColor m_btnBorderColor = QColor("#FFFF00");
+    QColor m_btnClickedColor = QColor("#FFFF00");
+    QColor m_btnEnabledColor = QColor("#FFFF00");
+
+    QColor m_btnTxtBackGroundColor = QColor("#FFFF00");
+    QColor m_btnTxtHoverColor = QColor("#FFFF00");
+    QColor m_btnTxtClickedColor = QColor("#FFFF00");
+    QColor m_btnTxtEnabledColor = QColor("#FFFF00");
 };
 
 #endif
