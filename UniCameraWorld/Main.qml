@@ -25,31 +25,47 @@ Window {
         height: root.height
         width: root.sideMenuWidth
         property double buttonsHeight: 40
-        Rectangle {
+
+        background: Rectangle {
+            color: "#903A3A3A"
+            border.width: 0
+        }
+
+        ColumnLayout {
+            id: sideMenuLayout
             anchors.fill: parent
-            color: "#3A3A3A"
+            anchors.margins: 16
+            spacing: 10
 
-            ColumnLayout {
-                id: sideMenuLayout
-                anchors.fill: parent
-                anchors.margins: 16
-                spacing: 10
+            UniLabel {
+                Layout.preferredHeight: 50
+                Layout.fillWidth: true
+                label: "Menu"
+                enableHover: true
+                isBold: true
+                fontSize: 30
+                backGroundColor: "transparent"
+                borderColor: "transparent"
+                hoverColor: "#C49700"
+                textColor: "#E5E4E2"
+            }
 
-                UniLabel {
-                    Layout.preferredHeight: 50
-                    Layout.fillWidth: true
-                    label: "Menu"
-                    enableHover: true
-                    isBold: true
-                    fontSize: 30
-                    backGroundColor: "transparent"
-                    borderColor: "transparent"
-                    hoverColor: "#C49700"
-                    textColor: "#E5E4E2"
-                }
+            ScrollView {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
                 ColumnLayout {
+                    id: scrollMenuArea
                     Layout.fillHeight: true
+                    Layout.fillWidth: true
+
+                    UniButton {
+                        Layout.fillWidth: parent
+                        Layout.preferredHeight: sideMenu.buttonsHeight
+                        label: "Home"
+                    }
+
                     UniButton {
                         Layout.fillWidth: parent
                         Layout.preferredHeight: sideMenu.buttonsHeight
@@ -65,36 +81,37 @@ Window {
                         label: "Planovani"
                     }
                 }
+            }
 
-                ColumnLayout {
-                    Layout.preferredHeight: 50
-                    UniButton {
-                        Layout.fillWidth: parent
-                        Layout.preferredHeight: sideMenu.buttonsHeight
-                        label: "Nastaveni tématu"
-                        onIsClicked: {
-                            appSetting.enabled = false
-                        }
+            ColumnLayout {
+                Layout.preferredHeight: 50
+                Layout.fillWidth: true
+                UniButton {
+                    Layout.fillWidth: parent
+                    Layout.preferredHeight: sideMenu.buttonsHeight
+                    label: "Nastaveni tématu"
+                    onIsClicked: {
+                        appSetting.enabled = false
                     }
+                }
 
-                    UniButton {
-                        Layout.fillWidth: parent
-                        Layout.preferredHeight: sideMenu.buttonsHeight
-                        label: "Nastaveni účtu"
-                        onIsClicked: {
-                            appSetting.enabled = true
-                        }
+                UniButton {
+                    Layout.fillWidth: parent
+                    Layout.preferredHeight: sideMenu.buttonsHeight
+                    label: "Nastaveni účtu"
+                    onIsClicked: {
+                        appSetting.enabled = true
                     }
+                }
 
-                    UniButton {
-                        id: appSetting
-                        Layout.fillWidth: parent
-                        Layout.preferredHeight: sideMenu.buttonsHeight
-                        label: "Nastaveni aplikace"
-                       // enabled: false
-                        onIsClicked: {
-                            console.debug ("Test disabled clicked")
-                        }
+                UniButton {
+                    id: appSetting
+                    Layout.fillWidth: parent
+                    Layout.preferredHeight: sideMenu.buttonsHeight
+                    label: "Nastaveni aplikace"
+                   // enabled: false
+                    onIsClicked: {
+                        console.debug ("Test disabled clicked")
                     }
                 }
             }
