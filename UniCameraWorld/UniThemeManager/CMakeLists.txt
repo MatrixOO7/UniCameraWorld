@@ -6,26 +6,27 @@ find_package(Qt6 REQUIRED COMPONENTS Quick)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
-#set(QML_SINGLETON_FILES
-#    # Add singleton files here
-#    ThemeManager.qml
-#)
+set(QML_SINGLETON_FILES
+    # Add singleton files here
+    ThemeManager.qml
+)
 
-#set_source_files_properties(
-#    ${QML_SINGLETON_FILES}
-#    PROPERTIES
-#        QT_QML_SINGLETON_TYPE TRUE
-#)
+set_source_files_properties(
+    ${QML_SINGLETON_FILES}
+    PROPERTIES
+        QT_QML_SINGLETON_TYPE TRUE
+)
 
 qt_add_qml_module(uniThemeManager
     URI UniThemeManager
-    VERSION 1.0
+    VERSION 1.1
     QML_FILES
-    SOURCES
-        UniThemeManager.h
-        UniThemeManager.cpp
-
-
+        ${QML_SINGLETON_FILES}
+        ThemeManager.qml
+        DarkTheme.qml
+        LightTheme.qml
+        UniButtonItem.qml
+        UniLabelItem.qml
 )
 
 target_link_libraries(uniThemeManager

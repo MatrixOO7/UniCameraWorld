@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Layouts
-import ThemeManager
+import UniThemeManager
 
 Rectangle {
     id: root
