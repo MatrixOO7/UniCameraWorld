@@ -1,14 +1,5 @@
-pragma Singleton
-import QtQuick
+import QtQuick 2.15
 
-Item {
-    id: root
-
-
-
-
-
-    property color btnBackGroundColor: "#2A2A2A"
-    property color btnHoverColor: "#383838"
+UniThemeManager {
 
 }

@@ -18,24 +18,7 @@ Item {
     property string themeName: "DarkTheme"
     property double version: 1.0
 
-    UniButtonItem {
-        id: normalButton
-        backgroundColor: "#2A2A2A"
-        borderColor: "#FFFF00"
-        textColor: "#FFFF00"
-
-        hoverBackgroundColor: "#383838"
-
-        enabledBackgroundColor: "#FFFF00"
-    }
-
-    UniButtonItem {
-        id: acceptButton
-
-    }
-
-    UniButtonItem {
-        id: cancelButton
-
+    UniThemeItem {
+        normalBtn.backgroundColor: "red"
     }
 }

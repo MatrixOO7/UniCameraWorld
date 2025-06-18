@@ -6,19 +6,20 @@ Rectangle {
     id: root
     clip: true
 
+
     property string imgPath: ""
     property string label: "label"
 
-
     /*_____________[Colors]______________*/
-    property color textColor: "#DDDDDD"
-    property color backGroundColor: ThemeManager.btnBackGroundColor
-    property color hoverColor: ThemeManager.btnHoverColor
-    property color borderColor: "#555555"
-    property color clickedColor: "#444444"
-    property color enabledColor: "#C6C6C6"
+    property color textColor: UniThemeManager.UniButton.TextColor
+    property color backGroundColor:  UniThemeManager.UniButton.BackgroundColor
+    property color hoverColor: UniThemeManager.UniButton.HoverBackgroundColor
 
-    property color actColor: backGroundColor
+    property color borderColor: UniThemeManager.UniButton.BorderColor
+    property color clickedColor: UniThemeManager.UniButton.ClickedBackgroundColor
+    property color enabledColor: UniThemeManager.UniButton.DisabledBackgroundColor
+
+    property color actColor: UniThemeManager.UniButton.BackgroundColor
 
 
     property int fontSize: 14
