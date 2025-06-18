@@ -9,9 +9,8 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     qmlRegisterSingletonInstance("UniThemeManager", 1, 1, "UniThemeManager", new UniThemeManager());
-    qmlRegisterUncreatableType<UniButtonItemTipedef>("UniThemeManager", 1, 1, "uniButtonItemTipedef", "Used internally");
-    qmlRegisterUncreatableType<UniLabelItemTipedef>("UniThemeManager", 1, 1, "uniLabelItemTipedef", "Used internally");
-
+    qRegisterMetaType<uniButtonItemTipedef>();
+    qRegisterMetaType<uniLabelItemTipedef>();
 
     QObject::connect(
         &engine,
@@ -19,6 +18,7 @@ int main(int argc, char *argv[])
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
+    //engine.rootContext()->
     engine.loadFromModule("UniCameraWorld", "Main");
 
     return app.exec();

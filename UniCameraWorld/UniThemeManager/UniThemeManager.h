@@ -10,9 +10,8 @@
 #include <QVariant>
 #include <QColor>
 
-struct UniButtonItemTipedef {
+struct uniButtonItemTipedef {
     Q_GADGET
-    QML_ELEMENT
 
     Q_PROPERTY(QColor BackgroundColor MEMBER BackgroundColor)
     Q_PROPERTY(QColor BorderColor MEMBER BorderColor)
@@ -47,10 +46,10 @@ public:
     QColor DisabledBorderColor;
     QColor DisabledTextColor;
 };
+Q_DECLARE_METATYPE(uniButtonItemTipedef)
 
-struct UniLabelItemTipedef {
+struct uniLabelItemTipedef {
     Q_GADGET
-    QML_ELEMENT
 
     Q_PROPERTY(QColor BackgroundColor MEMBER BackgroundColor)
     Q_PROPERTY(QColor BorderColor MEMBER BorderColor)
@@ -77,32 +76,32 @@ public:
     QColor DisabledBorderColor;
     QColor DisabledTextColor;
 };
+Q_DECLARE_METATYPE(uniLabelItemTipedef)
 
 class UniThemeManager : public QObject {
     Q_OBJECT
-    QML_ELEMENT
 
-    Q_PROPERTY(UniButtonItemTipedef UniButton READ UniButton WRITE SetUniButton NOTIFY UniButtonChanged FINAL)
-    Q_PROPERTY(UniLabelItemTipedef UniLabel READ UniLabel WRITE SetUniLabel NOTIFY UniLabelChanged FINAL)
+    Q_PROPERTY(uniButtonItemTipedef uniButton READ uniButton WRITE SetuniButton NOTIFY uniButtonChanged FINAL)
+    Q_PROPERTY(uniLabelItemTipedef uniLabel READ uniLabel WRITE SetuniLabel NOTIFY uniLabelChanged FINAL)
 
 public:
     explicit UniThemeManager(QObject *parent = nullptr);
 
     void InitManual();
 
-    UniButtonItemTipedef UniButton() const;
-    UniLabelItemTipedef UniLabel() const;
+    uniButtonItemTipedef uniButton() const;
+    uniLabelItemTipedef uniLabel() const;
 
-    void SetUniButton(UniButtonItemTipedef item);
-    void SetUniLabel(UniLabelItemTipedef item);
+    void SetuniButton(uniButtonItemTipedef item);
+    void SetuniLabel(uniLabelItemTipedef item);
 
 signals:
-    void UniButtonChanged();
-    void UniLabelChanged();
+    void uniButtonChanged();
+    void uniLabelChanged();
 
 private:
-    UniButtonItemTipedef m_UniButtonItem;
-    UniLabelItemTipedef m_UniLabelItem;
+    uniButtonItemTipedef m_UniButtonItem;
+    uniLabelItemTipedef m_UniLabelItem;
 };
 
 #endif // UNITHEMEMANAGER_V_1

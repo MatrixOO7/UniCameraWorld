@@ -9,7 +9,7 @@ UniThemeManager::UniThemeManager(QObject *parent)
 void UniThemeManager::InitManual()
 {
     // UniButton barvy
-    m_UniButtonItem.BackgroundColor = QColor::fromRgb(42,42,42); //QColor("#2A2A2A");
+    m_UniButtonItem.BackgroundColor = QColor("#902A2A2A");
     m_UniButtonItem.BorderColor = QColor("#444444");
     m_UniButtonItem.TextColor = QColor("#FFFFFF");
 
@@ -39,24 +39,24 @@ void UniThemeManager::InitManual()
     m_UniLabelItem.DisabledTextColor = QColor("#777777");
 }
 
-UniButtonItemTipedef UniThemeManager::UniButton() const
+uniButtonItemTipedef UniThemeManager::uniButton() const
 {
     return m_UniButtonItem;
 }
 
-UniLabelItemTipedef UniThemeManager::UniLabel() const
+uniLabelItemTipedef UniThemeManager::uniLabel() const
 {
     return m_UniLabelItem;
 }
 
-void UniThemeManager::SetUniButton(UniButtonItemTipedef item)
+void UniThemeManager::SetuniButton(uniButtonItemTipedef item)
 {
     m_UniButtonItem = item;
-    emit UniButtonChanged();
+    emit uniButtonChanged();
 }
 
-void UniThemeManager::SetUniLabel(UniLabelItemTipedef item)
+void UniThemeManager::SetuniLabel(uniLabelItemTipedef item)
 {
     m_UniLabelItem = item;
-    emit UniLabelChanged();
+    emit uniLabelChanged();
 }

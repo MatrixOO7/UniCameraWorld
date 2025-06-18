@@ -39,6 +39,7 @@ Window {
             spacing: 10
 
             UniLabel {
+                id: titleText
                 Layout.preferredHeight: 50
                 Layout.fillWidth: true
                 label: "Menu"
@@ -54,6 +55,7 @@ Window {
             ScrollView {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
+                //Layout.preferredWidth: titleText.width
                 ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
                 ColumnLayout {
@@ -62,13 +64,13 @@ Window {
                     Layout.fillWidth: true
 
                     UniButton {
-                        Layout.fillWidth: parent
+                        Layout.preferredWidth: titleText.width
                         Layout.preferredHeight: sideMenu.buttonsHeight
                         label: "Home"
                     }
 
                     UniButton {
-                        Layout.fillWidth: parent
+                        Layout.preferredWidth: titleText.width
                         Layout.preferredHeight: sideMenu.buttonsHeight
                         label: "Foto výbava"
                         onIsClicked: {
@@ -77,7 +79,7 @@ Window {
                     }
 
                     UniButton {
-                        Layout.fillWidth: parent
+                        Layout.preferredWidth: titleText.width
                         Layout.preferredHeight: sideMenu.buttonsHeight
                         label: "Planovani"
                     }
@@ -88,7 +90,7 @@ Window {
                 Layout.preferredHeight: 50
                 Layout.fillWidth: true
                 UniButton {
-                    Layout.fillWidth: parent
+                    Layout.fillWidth: true
                     Layout.preferredHeight: sideMenu.buttonsHeight
                     label: "Nastaveni tématu"
                     onIsClicked: {
@@ -97,7 +99,7 @@ Window {
                 }
 
                 UniButton {
-                    Layout.fillWidth: parent
+                    Layout.fillWidth: true
                     Layout.preferredHeight: sideMenu.buttonsHeight
                     label: "Nastaveni účtu"
                     onIsClicked: {
@@ -107,10 +109,9 @@ Window {
 
                 UniButton {
                     id: appSetting
-                    Layout.fillWidth: parent
+                    Layout.fillWidth: true
                     Layout.preferredHeight: sideMenu.buttonsHeight
                     label: "Nastaveni aplikace"
-                   // enabled: false
                     onIsClicked: {
                         console.debug ("Test disabled clicked")
                     }

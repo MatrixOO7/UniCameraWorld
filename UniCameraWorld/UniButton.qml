@@ -6,21 +6,14 @@ Rectangle {
     id: root
     clip: true
 
-
     property string imgPath: ""
     property string label: "label"
 
     /*_____________[Colors]______________*/
-    property color textColor: UniThemeManager.UniButton.TextColor
-    property color backGroundColor:  UniThemeManager.UniButton.BackgroundColor
-    property color hoverColor: UniThemeManager.UniButton.HoverBackgroundColor
+    property color borderColor: UniThemeManager.uniButton.BorderColor
 
-    property color borderColor: UniThemeManager.UniButton.BorderColor
-    property color clickedColor: UniThemeManager.UniButton.ClickedBackgroundColor
-    property color enabledColor: UniThemeManager.UniButton.DisabledBackgroundColor
-
-    property color actColor: UniThemeManager.UniButton.BackgroundColor
-
+    property color actBackGroundColor: UniThemeManager.uniButton.BackgroundColor
+    property color textColor: UniThemeManager.uniButton.TextColor
 
     property int fontSize: 14
     property int borderSize: 2
@@ -35,17 +28,16 @@ Rectangle {
     height: 20
     width: 200
 
+    radius: buttonRadius
+    color: backGroundColor
+    border.color: borderColor
+    border.width: borderSize
 
     Behavior on color {
        ColorAnimation {
            duration: 500
        }
     }
-
-    radius: buttonRadius
-    color: backGroundColor
-    border.color: borderColor
-    border.width: borderSize
 
     RowLayout {
         anchors.fill: parent
@@ -59,6 +51,7 @@ Rectangle {
         }
 
         Text {
+            id: label
             Layout.fillWidth: true
             Layout.fillHeight: true
             text: root.label
@@ -75,20 +68,24 @@ Rectangle {
         enabled: root.enabled
 
         onEntered: {
-            root.actColor = root.hoverColor
+            root.actBackGroundColor = UniThemeManager.uniButton.HoverBackgroundColor
+            root.textColor = UniThemeManager.uniButton.HoverTextColor
         }
 
         onExited: {
-            root.actColor = root.backGroundColor
+            root.actBackGroundColor = UniThemeManager.uniButton.BackgroundColor
+            root.textColor = UniThemeManager.uniButton.TextColor
         }
 
         onPressed: {
-            root.actColor = root.clickedColor
+            root.actBackGroundColor = UniThemeManager.uniButton.ClickedBackgroundColor
+            root.textColor = UniThemeManager.uniButton.ClickedTextColor
             root.isPressed()
         }
 
         onReleased: {
-            root.actColor = root.backGroundColor
+            root.actBackGroundColor = UniThemeManager.uniButton.BackgroundColor
+            root.textColor = UniThemeManager.uniButton.TextColor
             root.isReleased()
         }
 
@@ -103,13 +100,17 @@ Rectangle {
 
     onEnabledChanged: {
         if ( enabled === false  ) {
-            root.color = root.enabledColor
+            root.color = UniThemeManager.uniButton.DisabledBackgroundColor
         } else {
-            root.color = root.actColor
+            root.color = root.actBackGroundColor
         }
     }
 
-    onActColorChanged: {
-        root.color = root.actColor
+    onActBackGroundColorChanged: {
+        root.color = root.actBackGroundColor
+    }
+
+    onTextColorChanged: {
+        label.color = root.textColor
     }
 }
