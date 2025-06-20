@@ -29,7 +29,7 @@ Rectangle {
     width: 200
 
     radius: buttonRadius
-    color: backGroundColor
+    color: actBackGroundColor
     border.color: borderColor
     border.width: borderSize
 
@@ -51,7 +51,7 @@ Rectangle {
         }
 
         Text {
-            id: label
+            id: lbl
             Layout.fillWidth: true
             Layout.fillHeight: true
             text: root.label
@@ -111,6 +111,6 @@ Rectangle {
     }
 
     onTextColorChanged: {
-        label.color = root.textColor
+        lbl.color = root.textColor
     }
 }

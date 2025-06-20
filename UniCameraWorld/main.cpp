@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "UniThemeManager/UniThemeManager.h"
+#include <QColor>
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +12,10 @@ int main(int argc, char *argv[])
     qmlRegisterSingletonInstance("UniThemeManager", 1, 1, "UniThemeManager", new UniThemeManager());
     qRegisterMetaType<uniButtonItemTipedef>();
     qRegisterMetaType<uniLabelItemTipedef>();
+
+    qmlRegisterUncreatableType<QColor>("QtQuick", 2, 15, "QColor", "Cannot create QColor in QML");
+    qRegisterMetaType<QColor>("QColor");
+
 
     QObject::connect(
         &engine,

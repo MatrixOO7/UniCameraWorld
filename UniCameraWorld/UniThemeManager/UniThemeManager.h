@@ -10,8 +10,13 @@
 #include <QVariant>
 #include <QColor>
 
+#include <QDir>
+#include <QFileInfo>
+#include <QFileInfoList>
+
 struct uniButtonItemTipedef {
     Q_GADGET
+    QML_VALUE_TYPE(uniButtonItemTipedef)
 
     Q_PROPERTY(QColor BackgroundColor MEMBER BackgroundColor)
     Q_PROPERTY(QColor BorderColor MEMBER BorderColor)
@@ -50,6 +55,7 @@ Q_DECLARE_METATYPE(uniButtonItemTipedef)
 
 struct uniLabelItemTipedef {
     Q_GADGET
+    QML_VALUE_TYPE(uniLabelItemTipedef)
 
     Q_PROPERTY(QColor BackgroundColor MEMBER BackgroundColor)
     Q_PROPERTY(QColor BorderColor MEMBER BorderColor)
@@ -80,6 +86,8 @@ Q_DECLARE_METATYPE(uniLabelItemTipedef)
 
 class UniThemeManager : public QObject {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
     Q_PROPERTY(uniButtonItemTipedef uniButton READ uniButton WRITE SetuniButton NOTIFY uniButtonChanged FINAL)
     Q_PROPERTY(uniLabelItemTipedef uniLabel READ uniLabel WRITE SetuniLabel NOTIFY uniLabelChanged FINAL)
@@ -102,6 +110,10 @@ signals:
 private:
     uniButtonItemTipedef m_UniButtonItem;
     uniLabelItemTipedef m_UniLabelItem;
+
+    QStringList m_themeList;
+
+    void FindAllThemes ();
 };
 
 #endif // UNITHEMEMANAGER_V_1
