@@ -27,11 +27,11 @@ void UniThemeManager::InitManual()
     m_UniButtonItem.DisabledTextColor = QColor::fromRgba(0xFF888888); //  QColor("#888888");
 
     // UniLabel barvy
-    m_UniLabelItem.BackgroundColor = QColor("transparent");
+    m_UniLabelItem.BackgroundColor = QColor::fromRgba(0x30C49700);
     m_UniLabelItem.BorderColor = QColor("transparent");
     m_UniLabelItem.TextColor = QColor::fromRgba(0xFFCCCCCC); //  QColor("#CCCCCC");
 
-    m_UniLabelItem.HoverBackgroundColor = QColor("transparent");
+    m_UniLabelItem.HoverBackgroundColor = QColor::fromRgba(0xFFC49700);
     m_UniLabelItem.HoverBorderColor = QColor("transparent");
     m_UniLabelItem.HoverTextColor = QColor::fromRgba(0xFFEEEEEE); //  QColor("#EEEEEE");
 
@@ -63,7 +63,8 @@ void UniThemeManager::SetuniLabel(uniLabelItemTipedef item)
 }
 
 void UniThemeManager::FindAllThemes() {
-    QDir themeDir("UniThemeManager/Theme");
+    //QDir themeDir("UniThemeManager/Theme");
+    QDir themeDir(m_basePath+"Theme");
 
     m_themeList = themeDir.entryList(QStringList() << "*.json" << "*.JSON",QDir::Files);
 

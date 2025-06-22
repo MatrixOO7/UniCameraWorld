@@ -1,0 +1,71 @@
+{
+    "states": ["Normal", "Hover", "Disabled"],
+    "normal": {
+      "id": 1,
+      "defaultText": "button",
+      "color": {
+          "Normal": {
+          "Background": "0x902A2A2A",
+          "Border": "0xFF444444",
+          "Text": "0xFFFFFFFF"
+          },
+          "Hover": {
+          "Background": "0xFF3A3A3A",
+          "Border": "0xFF555555",
+          "Text": "0xFFFFFFFF"
+          },
+          "Disabled": {
+          "Background": "0xFF111111",
+          "Border": "0xFF222222",
+          "Text": "0xFF888888"
+          }
+      },
+      "Font": {
+          "Bold": true,
+          "Size": 16
+      },
+      "Style": {
+          "VisibleBorder": true,
+          "BorderSize": 3,
+          "HoverEnable": true,
+          "AnimationEnable": true
+      }
+      },
+
+      "title": {
+      "id": 2,
+      "defaultText": "title",
+      "color": {
+          "Normal": {
+          "Background": "0x90AA2A2A",
+          "Border": "0xFF884444",
+          "Text": "0xFFFFFFFF"
+          },
+          "Hover": {
+          "Background": "0xFFAA3A3A",
+          "Border": "0xFF995555",
+          "Text": "0xFFFFFFFF"
+          },
+          "Clicked": {
+          "Background": "0xFF661A1A",
+          "Border": "0xFF996666",
+          "Text": "0xFFFFFFFF"
+          },
+          "Disabled": {
+          "Background": "0xFF331111",
+          "Border": "0xFF552222",
+          "Text": "0xFF888888"
+          }
+      },
+      "Font": {
+          "Bold": true,
+          "Size": 16
+      },
+      "Style": {
+          "VisibleBorder": true,
+          "BorderSize": 3,
+          "HoverEnable": true,
+          "AnimationEnable": true
+      }
+    }
+  }

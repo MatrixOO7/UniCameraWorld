@@ -1,0 +1,114 @@
+{
+  "states": ["Normal", "Hover", "Clicked", "Disabled"],
+
+  "normal": {
+    "id": 1,
+    "defaultText": "button",
+    "color": {
+      "Normal": {
+        "Background": "0xFFFFFFFF",
+        "Border": "0xFFCCCCCC",
+        "Text": "0xFF000000"
+      },
+      "Hover": {
+        "Background": "0xFFFFFFFF",
+        "Border": "0xFFAAAAAA",
+        "Text": "0xFF000000"
+      },
+      "Clicked": {
+        "Background": "0xFFFFFFFF",
+        "Border": "0xFF888888",
+        "Text": "0xFF000000"
+      },
+      "Disabled": {
+        "Background": "0xFFEEEEEE",
+        "Border": "0xFFDDDDDD",
+        "Text": "0xFF999999"
+      }
+    },
+    "Font": {
+      "Bold": true,
+      "Size": 16
+    },
+    "Style": {
+      "VisibleBorder": true,
+      "BorderSize": 2,
+      "HoverEnable": true,
+      "AnimationEnable": true
+    }
+  },
+
+  "cancel": {
+    "id": 2,
+    "defaultText": "cancel",
+    "color": {
+      "Normal": {
+        "Background": "0xFFFFE5E5",
+        "Border": "0xFFFFBBBB",
+        "Text": "0xFF550000"
+      },
+      "Hover": {
+        "Background": "0xFFFFCCCC",
+        "Border": "0xFFFF9999",
+        "Text": "0xFF550000"
+      },
+      "Clicked": {
+        "Background": "0xFFFFFFFF",
+        "Border": "0xFF996666",
+        "Text": "0xFF550000"
+      },
+      "Disabled": {
+        "Background": "0xFFF5D5D5",
+        "Border": "0xFFDDAAAA",
+        "Text": "0xFF999999"
+      }
+    },
+    "Font": {
+      "Bold": true,
+      "Size": 16
+    },
+    "Style": {
+      "VisibleBorder": true,
+      "BorderSize": 2,
+      "HoverEnable": true,
+      "AnimationEnable": true
+    }
+  },
+
+  "accepted": {
+    "id": 3,
+    "defaultText": "OK",
+    "color": {
+      "Normal": {
+        "Background": "0xFFE8F5E9",
+        "Border": "0xFFB2DFDB",
+        "Text": "0xFF004D40"
+      },
+      "Hover": {
+        "Background": "0xFFC8E6C9",
+        "Border": "0xFF80CBC4",
+        "Text": "0xFF004D40"
+      },
+      "Clicked": {
+        "Background": "0xFFFFFFFF",
+        "Border": "0xFF4DB6AC",
+        "Text": "0xFF004D40"
+      },
+      "Disabled": {
+        "Background": "0xFFD6EFD6",
+        "Border": "0xFFA5D6A7",
+        "Text": "0xFF999999"
+      }
+    },
+    "Font": {
+      "Bold": true,
+      "Size": 16
+    },
+    "Style": {
+      "VisibleBorder": true,
+      "BorderSize": 2,
+      "HoverEnable": true,
+      "AnimationEnable": true
+    }
+  }
+}

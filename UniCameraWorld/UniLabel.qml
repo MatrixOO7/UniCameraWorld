@@ -11,11 +11,11 @@ Rectangle {
 
 
     /*_____________[Colors]______________*/
-    property color textColor: "#666666"
-    property color backGroundColor: ThemeManager.btnBackGroundColor
-    property color hoverColor: ThemeManager.btnHoverColor
-    property color borderColor: "green"
-    property color enabledColor: "#C6C6C6"
+    property color textColor: UniThemeManager.uniLabel.TextColor
+    property color backGroundColor: UniThemeManager.uniLabel.BackgroundColor
+    property color hoverColor: UniThemeManager.uniLabel.HoverBackgroundColor
+    property color borderColor: UniThemeManager.uniLabel.BorderColor
+    property color enabledColor: UniThemeManager.uniLabel.DisabledBackgroundColor
 
     property color actColor: backGroundColor
 

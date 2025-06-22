@@ -108,6 +108,8 @@ signals:
     void uniLabelChanged();
 
 private:
+    const QString m_basePath = "UniThemeManager/";
+
     uniButtonItemTipedef m_UniButtonItem;
     uniLabelItemTipedef m_UniLabelItem;
 

@@ -1,0 +1,67 @@
+{
+  "states": ["Normal", "Hover", "Disabled"],
+
+  "normal": {
+    "id": 1,
+    "defaultText": "label",
+    "color": {
+      "Normal": {
+        "Background": "0xCCFFFFFF",
+        "Border": "0xFFCCCCCC",
+        "Text": "0xFF000000"
+      },
+      "Hover": {
+        "Background": "0xE6FFFFFF",
+        "Border": "0xFFBBBBBB",
+        "Text": "0xFF000000"
+      },
+      "Disabled": {
+        "Background": "0xB3F5F5F5",
+        "Border": "0xFFE0E0E0",
+        "Text": "0xFF999999"
+      }
+    },
+    "Font": {
+      "Bold": true,
+      "Size": 16
+    },
+    "Style": {
+      "VisibleBorder": true,
+      "BorderSize": 2,
+      "HoverEnable": true,
+      "AnimationEnable": true
+    }
+  },
+
+  "title": {
+    "id": 2,
+    "defaultText": "title",
+    "color": {
+      "Normal": {
+        "Background": "0xCCFFF9C4",
+        "Border": "0xFFFFF176",
+        "Text": "0xFF444400"
+      },
+      "Hover": {
+        "Background": "0xE6FFF59D",
+        "Border": "0xFFFFEE58",
+        "Text": "0xFF444400"
+      },
+      "Disabled": {
+        "Background": "0xB3FFFDE7",
+        "Border": "0xFFFFECB3",
+        "Text": "0xFFAAAAAA"
+      }
+    },
+    "Font": {
+      "Bold": true,
+      "Size": 16
+    },
+    "Style": {
+      "VisibleBorder": true,
+      "BorderSize": 2,
+      "HoverEnable": true,
+      "AnimationEnable": true
+    }
+  }
+}

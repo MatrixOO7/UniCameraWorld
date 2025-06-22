@@ -46,9 +46,6 @@ Window {
                 enableHover: true
                 isBold: true
                 fontSize: 30
-                backGroundColor: "transparent"
-                borderColor: "transparent"
-                hoverColor: "#C49700"
                 textColor: "#E5E4E2"
             }
 
