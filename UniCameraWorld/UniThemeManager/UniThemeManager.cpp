@@ -9,6 +9,13 @@ UniThemeManager::UniThemeManager(QObject *parent)
 
 void UniThemeManager::InitManual()
 {
+    DefaultLoad_button();
+    DefaultLoad_label();
+    DefaultLoad_mainWindow();
+    DefaultLoad_sideMenu();
+}
+
+void UniThemeManager::DefaultLoad_button() {
     // UniButton barvy
     m_UniButtonItem.BackgroundColor = QColor::fromRgba(0x902A2A2A); //  QColor("#902A2A2A");
     m_UniButtonItem.BorderColor = QColor::fromRgba(0xFF444444); // QColor("#444444");
@@ -25,7 +32,9 @@ void UniThemeManager::InitManual()
     m_UniButtonItem.DisabledBackgroundColor = QColor::fromRgba(0xFF111111); // QColor("#111111");
     m_UniButtonItem.DisabledBorderColor = QColor::fromRgba(0xFF222222); //  QColor("#222222");
     m_UniButtonItem.DisabledTextColor = QColor::fromRgba(0xFF888888); //  QColor("#888888");
+}
 
+void UniThemeManager::DefaultLoad_label() {
     // UniLabel barvy
     m_UniLabelItem.BackgroundColor = QColor::fromRgba(0x30C49700);
     m_UniLabelItem.BorderColor = QColor("transparent");
@@ -38,6 +47,14 @@ void UniThemeManager::InitManual()
     m_UniLabelItem.DisabledBackgroundColor = QColor("transparent");
     m_UniLabelItem.DisabledBorderColor = QColor("transparent");
     m_UniLabelItem.DisabledTextColor = QColor::fromRgba(0xFF777777); // QColor("#777777");
+}
+
+void UniThemeManager::DefaultLoad_mainWindow(){
+    m_UniMainWindowItem.BackgroundColor = QColor::fromRgba(0x30C49700);
+}
+
+void UniThemeManager::DefaultLoad_sideMenu() {
+    m_UniSideMenuItem.BackgroundColor = QColor::fromRgba(0x30C49700);
 }
 
 uniButtonItemTipedef UniThemeManager::uniButton() const
@@ -60,6 +77,18 @@ void UniThemeManager::SetuniLabel(uniLabelItemTipedef item)
 {
     m_UniLabelItem = item;
     emit uniLabelChanged();
+}
+
+void UniThemeManager::SetuniSideMenu(uniSideMenuItemTypedef item)
+{
+    m_UniSideMenuItem = item;
+    emit uniSideMenuChanged();
+}
+
+void UniThemeManager::SetuniMainWindow(uniMainWindowItemTypedef item)
+{
+    m_UniMainWindowItem = item;
+    emit uniMainWindowChanged();
 }
 
 void UniThemeManager::FindAllThemes() {

@@ -84,6 +84,28 @@ public:
 };
 Q_DECLARE_METATYPE(uniLabelItemTipedef)
 
+struct uniMainWindowItemTypedef {
+    Q_GADGET
+    QML_VALUE_TYPE(uniMainWindowItemTypedef)
+
+    Q_PROPERTY(QColor BackgroundColor MEMBER BackgroundColor)
+
+public:
+    QColor BackgroundColor;
+};
+Q_DECLARE_METATYPE(uniMainWindowItemTypedef)
+
+struct uniSideMenuItemTypedef {
+    Q_GADGET
+    QML_VALUE_TYPE(uniSideMenuItemTypedef)
+
+    Q_PROPERTY(QColor BackgroundColor MEMBER BackgroundColor)
+
+public:
+    QColor BackgroundColor;
+};
+Q_DECLARE_METATYPE(uniSideMenuItemTypedef)
+
 class UniThemeManager : public QObject {
     Q_OBJECT
     QML_ELEMENT
@@ -91,6 +113,8 @@ class UniThemeManager : public QObject {
 
     Q_PROPERTY(uniButtonItemTipedef uniButton READ uniButton WRITE SetuniButton NOTIFY uniButtonChanged FINAL)
     Q_PROPERTY(uniLabelItemTipedef uniLabel READ uniLabel WRITE SetuniLabel NOTIFY uniLabelChanged FINAL)
+    Q_PROPERTY(uniMainWindowItemTypedef uniMainWindow READ uniMainWindow WRITE SetuniMainWindow NOTIFY uniMainWindowChanged FINAL)
+    Q_PROPERTY(uniSideMenuItemTypedef uniSaidMenu READ uniSaidMenu WRITE SetuniSaidMenu NOTIFY uniSaidMenuChanged FINAL)
 
 public:
     explicit UniThemeManager(QObject *parent = nullptr);
@@ -99,23 +123,35 @@ public:
 
     uniButtonItemTipedef uniButton() const;
     uniLabelItemTipedef uniLabel() const;
+    uniMainWindowItemTypedef uniMainWindow() const;
+    uniSideMenuItemTypedef uniSideMenu() const;
 
     void SetuniButton(uniButtonItemTipedef item);
     void SetuniLabel(uniLabelItemTipedef item);
+    void SetuniMainWindow(uniMainWindowItemTypedef item);
+    void SetuniSideMenu(uniSideMenuItemTypedef item);
 
 signals:
     void uniButtonChanged();
     void uniLabelChanged();
+    void uniMainWindowChanged();
+    void uniSideMenuChanged();
 
 private:
     const QString m_basePath = "UniThemeManager/";
 
     uniButtonItemTipedef m_UniButtonItem;
     uniLabelItemTipedef m_UniLabelItem;
+    uniMainWindowItemTypedef m_UniMainWindowItem;
+    uniSideMenuItemTypedef m_UniSideMenuItem;
 
     QStringList m_themeList;
 
     void FindAllThemes ();
+    void DefaultLoad_button();
+    void DefaultLoad_label();
+    void DefaultLoad_mainWindow();
+    void DefaultLoad_sideMenu();
 };
 
 #endif // UNITHEMEMANAGER_V_1

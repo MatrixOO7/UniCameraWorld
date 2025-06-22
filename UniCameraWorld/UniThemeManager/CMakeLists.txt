@@ -20,9 +20,45 @@ qt_add_qml_module(uniThemeManager
         UniThemeManager.h
 
     RESOURCES
-        Theme/dark.json
-        Theme/light.json
-        Theme/unicorn.json
+        # dark theme
+        Theme/dark/button.json
+        Theme/dark/label.json
+        Theme/dark/mainWindow.json
+        Theme/dark/setting.json
+        Theme/dark/sideMenu.json
+        Theme/dark/theme.json
+
+        # modern dark theme
+        Theme/modern_dark/button.json
+        Theme/modern_dark/label.json
+        Theme/modern_dark/mainWindow.json
+        Theme/modern_dark/setting.json
+        Theme/modern_dark/sideMenu.json
+        Theme/modern_dark/theme.json
+
+        # light theme
+        Theme/light/button.json
+        Theme/light/label.json
+        Theme/light/mainWindow.json
+        Theme/light/setting.json
+        Theme/light/sideMenu.json
+        Theme/light/theme.json
+
+        # modern light theme
+        Theme/modern_light/button.json
+        Theme/modern_light/label.json
+        Theme/modern_light/mainWindow.json
+        Theme/modern_light/setting.json
+        Theme/modern_light/sideMenu.json
+        Theme/modern_light/theme.json
+
+        # unicorn theme
+        Theme/unicorn/button.json
+        Theme/unicorn/label.json
+        Theme/unicorn/mainWindow.json
+        Theme/unicorn/setting.json
+        Theme/unicorn/sideMenu.json
+        Theme/unicorn/theme.json
 )
 
 target_link_libraries(uniThemeManager
