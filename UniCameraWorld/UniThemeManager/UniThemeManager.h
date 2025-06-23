@@ -146,6 +146,7 @@ private:
     uniSideMenuItemTypedef m_UniSideMenuItem;
 
     QStringList m_themeList;
+    QList<QStringList> m_theme_json_list;
 
     void FindAllThemes ();
     void DefaultLoad_button();

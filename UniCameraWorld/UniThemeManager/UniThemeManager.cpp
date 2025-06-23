@@ -100,14 +100,19 @@ void UniThemeManager::SetuniMainWindow(uniMainWindowItemTypedef item)
 }
 
 void UniThemeManager::FindAllThemes() {
-    //QDir themeDir("UniThemeManager/Theme");
     QDir themeDir(m_basePath+"Theme");
 
-    m_themeList = themeDir.entryList(QStringList() << "*.json" << "*.JSON",QDir::Files);
+    m_themeList = themeDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
     qDebug() << "> Theme name [ cnt " << m_themeList.count() << " ]";
 
     foreach (QString item, m_themeList) {
         qDebug() << "> Theme name [ " << item << " ]";
+        QDir jsonList = (m_basePath+"Theme/"+item);
+        m_theme_json_list.append(jsonList.entryList({"*.json"}, QDir::Files));
+
+        foreach (QString item1, m_theme_json_list.last()) {
+            qDebug() << ">>>> Lst json [ " << item1 << " ]";
+        }
     }
 }
