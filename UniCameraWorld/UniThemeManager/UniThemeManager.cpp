@@ -67,6 +67,14 @@ uniLabelItemTipedef UniThemeManager::uniLabel() const
     return m_UniLabelItem;
 }
 
+uniMainWindowItemTypedef UniThemeManager::uniMainWindow() const {
+    return m_UniMainWindowItem;
+}
+
+uniSideMenuItemTypedef UniThemeManager::uniSideMenu() const {
+    return m_UniSideMenuItem;
+}
+
 void UniThemeManager::SetuniButton(uniButtonItemTipedef item)
 {
     m_UniButtonItem = item;

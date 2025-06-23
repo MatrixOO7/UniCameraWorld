@@ -114,7 +114,7 @@ class UniThemeManager : public QObject {
     Q_PROPERTY(uniButtonItemTipedef uniButton READ uniButton WRITE SetuniButton NOTIFY uniButtonChanged FINAL)
     Q_PROPERTY(uniLabelItemTipedef uniLabel READ uniLabel WRITE SetuniLabel NOTIFY uniLabelChanged FINAL)
     Q_PROPERTY(uniMainWindowItemTypedef uniMainWindow READ uniMainWindow WRITE SetuniMainWindow NOTIFY uniMainWindowChanged FINAL)
-    Q_PROPERTY(uniSideMenuItemTypedef uniSaidMenu READ uniSaidMenu WRITE SetuniSaidMenu NOTIFY uniSaidMenuChanged FINAL)
+    Q_PROPERTY(uniSideMenuItemTypedef uniSideMenu READ uniSideMenu WRITE SetuniSideMenu NOTIFY uniSideMenuChanged FINAL)
 
 public:
     explicit UniThemeManager(QObject *parent = nullptr);
