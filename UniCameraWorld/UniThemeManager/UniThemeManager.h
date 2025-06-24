@@ -106,6 +106,27 @@ public:
 };
 Q_DECLARE_METATYPE(uniSideMenuItemTypedef)
 
+struct uniThemeInfoTypedef {
+    Q_GADGET
+    QML_VALUE_TYPE(uniThemeInfoTypedef)
+
+    Q_PROPERTY(QString Name MEMBER Name)
+    Q_PROPERTY(QString Description MEMBER Description)
+    Q_PROPERTY(QString Version MEMBER Version)
+    Q_PROPERTY(QString Author MEMBER Author)
+    Q_PROPERTY(QString Path MEMBER Path)
+
+public:
+    QString Name;
+    QString Description;
+    QString Version;
+    QString Author;
+    QString Path;
+};
+Q_DECLARE_METATYPE(uniThemeInfoTypedef)
+
+
+
 class UniThemeManager : public QObject {
     Q_OBJECT
     QML_ELEMENT
@@ -147,8 +168,14 @@ private:
 
     QStringList m_themeList;
     QList<QStringList> m_theme_json_list;
+    QList<uniThemeInfoTypedef> m_themeInfo;
 
+    /*_______[Load themes from files]_______*/
     void FindAllThemes ();
+    void LoadThemeInfo( QString Path, uniThemeInfoTypedef &info );
+
+
+    /*_______[Load default colors]_______*/
     void DefaultLoad_button();
     void DefaultLoad_label();
     void DefaultLoad_mainWindow();

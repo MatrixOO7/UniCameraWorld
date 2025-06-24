@@ -1,10 +1,13 @@
 #include "UniThemeManager.h"
+#include <QJsonDocument>
+#include <QJsonObject>
 
 UniThemeManager::UniThemeManager(QObject *parent)
     : QObject(parent)
 {
     InitManual();
     FindAllThemes();
+
 }
 
 void UniThemeManager::InitManual()
@@ -106,13 +109,51 @@ void UniThemeManager::FindAllThemes() {
 
     qDebug() << "> Theme name [ cnt " << m_themeList.count() << " ]";
 
-    foreach (QString item, m_themeList) {
+    for (auto &item:m_themeList) {
         qDebug() << "> Theme name [ " << item << " ]";
         QDir jsonList = (m_basePath+"Theme/"+item);
         m_theme_json_list.append(jsonList.entryList({"*.json"}, QDir::Files));
 
-        foreach (QString item1, m_theme_json_list.last()) {
+        for (auto &item1:m_theme_json_list.last()) {
             qDebug() << ">>>> Lst json [ " << item1 << " ]";
+            uniThemeInfoTypedef info;
+            info.Path = m_basePath+"Theme/"+item+"/"+item1;
+
+            LoadThemeInfo(m_basePath+"Theme/"+item+"/"+item1, info);
+            m_themeInfo.append(info);
+            qDebug() << "> Print info:";
+            qDebug() << "Name: " << info.Name;
+            qDebug() << "Description: " << info.Description;
+            qDebug() << "Author: " << info.Author;
+            qDebug() << "Version: " << info.Version;
+            qDebug() << "Path: " << info.Path;
         }
     }
+}
+
+void UniThemeManager::LoadThemeInfo( QString Path, uniThemeInfoTypedef &Info ) {
+    QFile jsonFile(Path);
+
+    if ( !jsonFile.open(QIODevice::ReadOnly | QIODevice::Text) ) {
+        qDebug() << ">>> Info json open error";
+    }
+
+    QByteArray jsonData = jsonFile.readAll();
+    jsonFile.close();
+
+    QJsonParseError parseError;
+    QJsonDocument doc = QJsonDocument::fromJson(jsonData, &parseError);
+
+    if (parseError.error != QJsonParseError::NoError) {
+        qWarning() << "Chyba při parsování JSON:" << parseError.errorString();
+        return;
+    }
+
+    QJsonObject obj = doc.object();
+
+    Info.Name = obj.value("name").toString();
+    Info.Description = obj.value("description").toString();
+    Info.Author = obj.value("author").toString();
+    Info.Version = obj.value("version").toString();
+    Info.Path = Path;
 }

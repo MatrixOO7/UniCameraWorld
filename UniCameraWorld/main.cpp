@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<uniLabelItemTipedef>();
     qRegisterMetaType<uniMainWindowItemTypedef>();
     qRegisterMetaType<uniSideMenuItemTypedef>();
+    qRegisterMetaType<uniThemeInfoTypedef>();
 
     qmlRegisterUncreatableType<QColor>("QtQuick", 2, 15, "QColor", "Cannot create QColor in QML");
     qRegisterMetaType<QColor>("QColor");
