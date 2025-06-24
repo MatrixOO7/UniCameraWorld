@@ -116,17 +116,19 @@ void UniThemeManager::FindAllThemes() {
 
         for (auto &item1:m_theme_json_list.last()) {
             qDebug() << ">>>> Lst json [ " << item1 << " ]";
-            uniThemeInfoTypedef info;
-            info.Path = m_basePath+"Theme/"+item+"/"+item1;
+            if ( item1 == QStringLiteral("theme.json") ) {
+                uniThemeInfoTypedef info;
+                info.Path = m_basePath+"Theme/"+item+"/"+item1;
 
-            LoadThemeInfo(m_basePath+"Theme/"+item+"/"+item1, info);
-            m_themeInfo.append(info);
-            qDebug() << "> Print info:";
-            qDebug() << "Name: " << info.Name;
-            qDebug() << "Description: " << info.Description;
-            qDebug() << "Author: " << info.Author;
-            qDebug() << "Version: " << info.Version;
-            qDebug() << "Path: " << info.Path;
+                LoadThemeInfo(m_basePath+"Theme/"+item+"/"+item1, info);
+                m_themeInfo.append(info);
+                qDebug() << "> Print info:";
+                qDebug() << "Name: " << info.Name;
+                qDebug() << "Description: " << info.Description;
+                qDebug() << "Author: " << info.Author;
+                qDebug() << "Version: " << info.Version;
+                qDebug() << "Path: " << info.Path;
+            }
         }
     }
 }
