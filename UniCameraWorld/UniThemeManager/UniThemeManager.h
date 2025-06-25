@@ -125,6 +125,21 @@ public:
 };
 Q_DECLARE_METATYPE(uniThemeInfoTypedef)
 
+struct stThemeList {
+    Q_GADGET
+    QML_VALUE_TYPE(stThemeList)
+
+    Q_PROPERTY(uniThemeInfoTypedef Info MEMBER Info)
+    Q_PROPERTY(QString DirName MEMBER DirName)
+    Q_PROPERTY(QStringList FileList MEMBER FileList)
+
+public:
+    uniThemeInfoTypedef Info;
+    QString DirName;
+    QStringList FileList;
+};
+Q_DECLARE_METATYPE(stThemeList)
+
 
 
 class UniThemeManager : public QObject {
@@ -166,13 +181,14 @@ private:
     uniMainWindowItemTypedef m_UniMainWindowItem;
     uniSideMenuItemTypedef m_UniSideMenuItem;
 
-    QStringList m_themeList;
-    QList<QStringList> m_theme_json_list;
-    QList<uniThemeInfoTypedef> m_themeInfo;
+
+
+    QList<stThemeList> m_themeList;
 
     /*_______[Load themes from files]_______*/
     void FindAllThemes ();
     void LoadThemeInfo( QString Path, uniThemeInfoTypedef &info );
+    bool JsonLoader(QString Path, QJsonDocument &doc);
 
 
     /*_______[Load default colors]_______*/

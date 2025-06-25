@@ -104,50 +104,38 @@ void UniThemeManager::SetuniMainWindow(uniMainWindowItemTypedef item)
 
 void UniThemeManager::FindAllThemes() {
     QDir themeDir(m_basePath+"Theme");
+    stThemeList themeItem;
 
-    m_themeList = themeDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+    QStringList dirList = themeDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
     qDebug() << "> Theme name [ cnt " << m_themeList.count() << " ]";
 
-    for (auto &item:m_themeList) {
-        qDebug() << "> Theme name [ " << item << " ]";
+    /*______________[Dir path loader]__________________*/
+    for (auto &item:dirList) {
+        themeItem.DirName = item;
         QDir jsonList = (m_basePath+"Theme/"+item);
-        m_theme_json_list.append(jsonList.entryList({"*.json"}, QDir::Files));
+        QStringList m_theme_dir_list;
 
-        for (auto &item1:m_theme_json_list.last()) {
-            qDebug() << ">>>> Lst json [ " << item1 << " ]";
+        m_theme_dir_list.append(jsonList.entryList({"*.json"}, QDir::Files));
+
+        /*_____________[File path loader]_______________*/
+        for (auto &item1:m_theme_dir_list) {
+            themeItem.FileList.append(item1);
             if ( item1 == QStringLiteral("theme.json") ) {
-                uniThemeInfoTypedef info;
-                info.Path = m_basePath+"Theme/"+item+"/"+item1;
-
-                LoadThemeInfo(m_basePath+"Theme/"+item+"/"+item1, info);
-                m_themeInfo.append(info);
-                qDebug() << "> Print info:";
-                qDebug() << "Name: " << info.Name;
-                qDebug() << "Description: " << info.Description;
-                qDebug() << "Author: " << info.Author;
-                qDebug() << "Version: " << info.Version;
-                qDebug() << "Path: " << info.Path;
+                themeItem.Info.Path = m_basePath+"Theme/"+item+"/"+item1;
+                LoadThemeInfo(m_basePath+"Theme/"+item+"/"+item1, themeItem.Info);
             }
         }
+        m_themeList.append(themeItem);
     }
 }
 
 void UniThemeManager::LoadThemeInfo( QString Path, uniThemeInfoTypedef &Info ) {
-    QFile jsonFile(Path);
+    QJsonDocument doc;
+    bool loaded = JsonLoader(Path, doc);
 
-    if ( !jsonFile.open(QIODevice::ReadOnly | QIODevice::Text) ) {
-        qDebug() << ">>> Info json open error";
-    }
-
-    QByteArray jsonData = jsonFile.readAll();
-    jsonFile.close();
-
-    QJsonParseError parseError;
-    QJsonDocument doc = QJsonDocument::fromJson(jsonData, &parseError);
-
-    if (parseError.error != QJsonParseError::NoError) {
-        qWarning() << "Chyba při parsování JSON:" << parseError.errorString();
+    if (!loaded) {
+        qDebug() << "> Error with load json file...";
         return;
     }
 
@@ -158,4 +146,26 @@ void UniThemeManager::LoadThemeInfo( QString Path, uniThemeInfoTypedef &Info ) {
     Info.Author = obj.value("author").toString();
     Info.Version = obj.value("version").toString();
     Info.Path = Path;
+}
+
+bool UniThemeManager::JsonLoader(QString Path, QJsonDocument &doc) {
+    QFile jsonFile(Path);
+
+    if ( !jsonFile.open(QIODevice::ReadOnly | QIODevice::Text) ) {
+        qDebug() << ">>> Info json open error";
+        return false;
+    }
+
+    QByteArray jsonData = jsonFile.readAll();
+    jsonFile.close();
+
+    QJsonParseError parseError;
+    doc = QJsonDocument::fromJson(jsonData, &parseError);
+
+    if (parseError.error != QJsonParseError::NoError) {
+        qWarning() << "Chyba při parsování JSON:" << parseError.errorString();
+        return false;
+    }
+
+    return true;
 }
