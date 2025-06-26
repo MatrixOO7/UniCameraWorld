@@ -122,6 +122,20 @@ public:
     QString Version;
     QString Author;
     QString Path;
+
+    /*__________[tyto funkce tu jsou kvuli Q_GADGET aby vedel ze nastala zmnena - start]__________*/
+    bool operator==(const uniThemeInfoTypedef &other) const {
+        return Name == other.Name &&
+               Description == other.Description &&
+               Version == other.Version &&
+               Author == other.Author &&
+               Path == other.Path;
+    }
+
+    bool operator!=(const uniThemeInfoTypedef &other) const {
+        return !(*this == other);
+    }
+    /*__________[tyto funkce tu jsou kvuli Q_GADGET aby vedel ze nastala zmnena - end]__________*/
 };
 Q_DECLARE_METATYPE(uniThemeInfoTypedef)
 
