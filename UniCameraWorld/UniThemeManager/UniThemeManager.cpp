@@ -8,6 +8,8 @@ UniThemeManager::UniThemeManager(QObject *parent)
     InitManual();
     FindAllThemes();
 
+    LoadTheme("Unicorn");
+
 }
 
 void UniThemeManager::InitManual()
@@ -123,7 +125,7 @@ void UniThemeManager::FindAllThemes() {
             themeItem.FileList.append(item1);
             if ( item1 == QStringLiteral("theme.json") ) {
                 themeItem.Info.Path = m_basePath+"Theme/"+item+"/"+item1;
-                LoadThemeInfo(m_basePath+"Theme/"+item+"/"+item1, themeItem.Info);
+                LoadThemeInfo(m_basePath+"Theme/"+item+"/", themeItem.Info);
             }
         }
         m_themeList.append(themeItem);
@@ -132,7 +134,7 @@ void UniThemeManager::FindAllThemes() {
 
 void UniThemeManager::LoadThemeInfo( QString Path, uniThemeInfoTypedef &Info ) {
     QJsonDocument doc;
-    bool loaded = JsonLoader(Path, doc);
+    bool loaded = JsonLoader(Path+"/theme.json", doc);
 
     if (!loaded) {
         qDebug() << "> Error with load json file...";
@@ -167,5 +169,88 @@ bool UniThemeManager::JsonLoader(QString Path, QJsonDocument &doc) {
         return false;
     }
 
+    return true;
+}
+
+bool UniThemeManager::LoadTheme(QString themeName) {
+#define totalElements 4
+
+    bool someError = false;
+    int themeElementsCount = 0;
+
+    for ( auto &item:m_themeList ) {
+        if ( item.Info.Name == themeName ) {
+            qDebug() << "Cnt???  " << item.FileList.count();
+            for ( const QString &themeFile:item.FileList ) {
+
+                if ( !Load_button(item.Info.Path + themeFile) ) {
+                    DefaultLoad_button();
+                    someError = true;
+                } else {
+                    themeElementsCount++;
+                }
+
+                if ( !Load_label(item.Info.Path + themeFile) ) {
+                    DefaultLoad_label();
+                    someError = true;
+                } else {
+                    themeElementsCount++;
+                }
+
+                if ( !Load_mainWindow(item.Info.Path + themeFile) ) {
+                    DefaultLoad_mainWindow();
+                    someError = true;
+                } else {
+                    themeElementsCount++;
+                }
+
+                if ( !Load_sideMenu(item.Info.Path + themeFile) ) {
+                    DefaultLoad_sideMenu();
+                    someError = true;
+                } else {
+                    themeElementsCount++;
+                }
+
+                if ( themeElementsCount != totalElements ) {
+                    someError = true;
+                }
+            }
+            if (someError) {
+                qDebug() << ">>> Some error with load theme...";
+            } else {
+                qDebug() << ">>> All themes load successfull...";
+            }
+
+            m_lastPath = themeName;
+            return true;
+        }
+    }
+
+    qDebug() << ">>> Theme load failed...";
+    return false;
+}
+
+bool UniThemeManager::LoadLastTheme() {
+    return false;
+}
+
+
+bool UniThemeManager::Load_button( QString path ) {
+    qDebug() << ">> Fake load button :: " << path;
+    return true;
+}
+
+bool UniThemeManager::Load_label( QString path ) {
+    qDebug() << ">> Fake load label :: " << path;
+    return true;
+}
+
+bool UniThemeManager::Load_mainWindow( QString path ) {
+    qDebug() << ">> Fake load mainWindow :: " << path;
+    return true;
+}
+
+bool UniThemeManager::Load_sideMenu( QString path ) {
+    qDebug() << ">> Fake load sideMenu :: " << path;
     return true;
 }

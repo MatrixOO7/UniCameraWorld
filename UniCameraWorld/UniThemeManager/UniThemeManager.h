@@ -181,6 +181,9 @@ public:
     void SetuniMainWindow(uniMainWindowItemTypedef item);
     void SetuniSideMenu(uniSideMenuItemTypedef item);
 
+    bool LoadTheme(QString themeName);
+    bool LoadLastTheme();
+
 signals:
     void uniButtonChanged();
     void uniLabelChanged();
@@ -198,6 +201,7 @@ private:
 
 
     QList<stThemeList> m_themeList;
+    QString m_lastPath;
 
     /*_______[Load themes from files]_______*/
     void FindAllThemes ();
@@ -210,6 +214,12 @@ private:
     void DefaultLoad_label();
     void DefaultLoad_mainWindow();
     void DefaultLoad_sideMenu();
+
+    bool Load_button( QString path );
+    bool Load_label( QString path );
+    bool Load_mainWindow( QString path );
+    bool Load_sideMenu( QString path );
+
 };
 
 #endif // UNITHEMEMANAGER_V_1
