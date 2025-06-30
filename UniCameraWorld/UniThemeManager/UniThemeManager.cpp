@@ -1,6 +1,7 @@
 #include "UniThemeManager.h"
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 
 UniThemeManager::UniThemeManager(QObject *parent)
     : QObject(parent)
@@ -112,6 +113,8 @@ void UniThemeManager::FindAllThemes() {
 
     qDebug() << "> Theme name [ cnt " << m_themeList.count() << " ]";
 
+    int cntLoader = 0;
+
     /*______________[Dir path loader]__________________*/
     for (auto &item:dirList) {
         themeItem.DirName = item;
@@ -119,24 +122,26 @@ void UniThemeManager::FindAllThemes() {
         QStringList m_theme_dir_list;
 
         m_theme_dir_list.append(jsonList.entryList({"*.json"}, QDir::Files));
-
+        cntLoader = 0;
+        themeItem.FileList.clear();
         /*_____________[File path loader]_______________*/
         for (auto &item1:m_theme_dir_list) {
             themeItem.FileList.append(item1);
+            cntLoader++;
             if ( item1 == QStringLiteral("theme.json") ) {
                 themeItem.Info.Path = m_basePath+"Theme/"+item+"/"+item1;
                 LoadThemeInfo(m_basePath+"Theme/"+item+"/", themeItem.Info);
             }
         }
         m_themeList.append(themeItem);
+        qDebug() << "Tleme  json loader cnt " << cntLoader;
     }
 }
 
 void UniThemeManager::LoadThemeInfo( QString Path, uniThemeInfoTypedef &Info ) {
     QJsonDocument doc;
-    bool loaded = JsonLoader(Path+"/theme.json", doc);
 
-    if (!loaded) {
+    if (!JsonLoader(Path+"/theme.json", doc)) {
         qDebug() << "> Error with load json file...";
         return;
     }
@@ -175,47 +180,43 @@ bool UniThemeManager::JsonLoader(QString Path, QJsonDocument &doc) {
 bool UniThemeManager::LoadTheme(QString themeName) {
 #define totalElements 4
 
-    bool someError = false;
     int themeElementsCount = 0;
+
+    qDebug() << "Themes coun " << m_themeList.count();
+    qDebug() << "Theme json count " << m_themeList.at(1).FileList.count();
 
     for ( auto &item:m_themeList ) {
         if ( item.Info.Name == themeName ) {
             qDebug() << "Cnt???  " << item.FileList.count();
             for ( const QString &themeFile:item.FileList ) {
 
-                if ( !Load_button(item.Info.Path + themeFile) ) {
+                if ( !Load_button(item.Info.Path, themeFile) ) {
                     DefaultLoad_button();
-                    someError = true;
                 } else {
                     themeElementsCount++;
                 }
 
-                if ( !Load_label(item.Info.Path + themeFile) ) {
+                if ( !Load_label(item.Info.Path, themeFile) ) {
                     DefaultLoad_label();
-                    someError = true;
                 } else {
                     themeElementsCount++;
                 }
 
-                if ( !Load_mainWindow(item.Info.Path + themeFile) ) {
+                if ( !Load_mainWindow(item.Info.Path, themeFile) ) {
                     DefaultLoad_mainWindow();
-                    someError = true;
                 } else {
                     themeElementsCount++;
                 }
 
-                if ( !Load_sideMenu(item.Info.Path + themeFile) ) {
+                if ( !Load_sideMenu(item.Info.Path, themeFile) ) {
                     DefaultLoad_sideMenu();
-                    someError = true;
                 } else {
                     themeElementsCount++;
-                }
-
-                if ( themeElementsCount != totalElements ) {
-                    someError = true;
                 }
             }
-            if (someError) {
+
+            if (themeElementsCount != totalElements ) {
+                qDebug() << "> Error test " << themeElementsCount << " || " << totalElements;
                 qDebug() << ">>> Some error with load theme...";
             } else {
                 qDebug() << ">>> All themes load successfull...";
@@ -235,22 +236,47 @@ bool UniThemeManager::LoadLastTheme() {
 }
 
 
-bool UniThemeManager::Load_button( QString path ) {
-    qDebug() << ">> Fake load button :: " << path;
-    return true;
+bool UniThemeManager::Load_button( QString basePath, QString fileName ) {
+    if ( fileName.toLower() == "button.json" ) {
+        qDebug() << ">> Fake load button :: " << basePath+fileName;
+        QJsonDocument doc;
+        if (!JsonLoader(basePath+fileName, doc)) {
+            return false;
+        }
+
+        QJsonObject obj = doc.object();
+        QJsonArray colorArray = obj.value("states").toArray();
+
+        for (const QJsonValue &val : colorArray) {
+            qDebug() << val.toString();
+        }
+
+
+        return true;
+    }
+    return false;
 }
 
-bool UniThemeManager::Load_label( QString path ) {
-    qDebug() << ">> Fake load label :: " << path;
-    return true;
+bool UniThemeManager::Load_label( QString basePath, QString fileName ) {
+    if ( fileName.toLower() == "label.json" ) {
+        qDebug() << ">> Fake load label :: " << basePath+fileName;
+        return true;
+    }
+    return false;
 }
 
-bool UniThemeManager::Load_mainWindow( QString path ) {
-    qDebug() << ">> Fake load mainWindow :: " << path;
-    return true;
+bool UniThemeManager::Load_mainWindow( QString basePath, QString fileName ) {
+    if ( fileName.toLower() == "mainwindow.json" ) {
+        qDebug() << ">> Fake load main window :: " << basePath+fileName;
+        return true;
+    }
+    return false;
 }
 
-bool UniThemeManager::Load_sideMenu( QString path ) {
-    qDebug() << ">> Fake load sideMenu :: " << path;
-    return true;
+bool UniThemeManager::Load_sideMenu( QString basePath, QString fileName ) {
+    if ( fileName.toLower() == "sidemenu.json" ) {
+        qDebug() << ">> Fake load side menu :: " << basePath+fileName;
+        return true;
+    }
+    return false;
 }

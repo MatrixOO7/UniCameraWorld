@@ -215,10 +215,10 @@ private:
     void DefaultLoad_mainWindow();
     void DefaultLoad_sideMenu();
 
-    bool Load_button( QString path );
-    bool Load_label( QString path );
-    bool Load_mainWindow( QString path );
-    bool Load_sideMenu( QString path );
+    bool Load_button( QString basePath, QString fileName );
+    bool Load_label( QString basePath, QString fileName );
+    bool Load_mainWindow( QString basePath, QString fileName );
+    bool Load_sideMenu( QString basePath, QString fileName );
 
 };
 
