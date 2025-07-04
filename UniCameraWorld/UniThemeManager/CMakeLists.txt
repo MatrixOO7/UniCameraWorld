@@ -3,6 +3,12 @@ cmake_minimum_required(VERSION 3.24)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -16,6 +22,7 @@ qt_add_qml_module(uniThemeManager
     QML_FILES
 
     SOURCES
+
         UniThemeManager.cpp
         UniThemeManager.h
 
@@ -59,9 +66,22 @@ qt_add_qml_module(uniThemeManager
         Theme/unicorn/setting.json
         Theme/unicorn/sideMenu.json
         Theme/unicorn/theme.json
+        SOURCES unibaseinfo.h unibaseinfo.cpp
+        SOURCES unifont.h unifont.cpp
+        SOURCES unistyle.h unistyle.cpp
+        SOURCES unicolorsolid.h unicolorsolid.cpp
+        SOURCES unicolorgradient.h unicolorgradient.cpp
+        SOURCES unicolorstate.h unicolorstate.cpp
+
 )
 
 target_link_libraries(uniThemeManager
     PRIVATE
     Qt6::Quick
 )
+target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
+target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
+target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
+target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
+target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
+target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
