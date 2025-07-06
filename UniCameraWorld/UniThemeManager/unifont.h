@@ -4,27 +4,35 @@
 #include <QObject>
 #include <QQmlEngine>
 
-class UniFont
+class UniFont : QObject
 {
     Q_OBJECT
     QML_ELEMENT
 
-    Q_PROPERTY(QString fontFamily READ getFontFamily WRITE setFontFamily NOTIFY fontChanged FINAL)
-    Q_PROPERTY(bool isBold READ getIsBold WRITE setIsBold NOTIFY fontChanged FINAL)
-    Q_PROPERTY(bool IsUnderLine READ getIsUnderLine WRITE setIsUnderLine NOTIFY fontChanged FINAL)
-    Q_PROPERTY(bool isItalic READ getIsItalic WRITE setIsItalic NOTIFY fontChanged FINAL)
-    Q_PROPERTY(int fontSize READ getFontSize WRITE setFontSize NOTIFY fontChanged FINAL)
+    Q_PROPERTY(const QString fontFamily READ fontFamily WRITE setFontFamily NOTIFY fontChanged FINAL)
+    Q_PROPERTY(bool isBold READ getIsBold WRITE isBold NOTIFY isBoldChanged FINAL)
+    Q_PROPERTY(bool IsUnderLine READ isUnderLine WRITE setIsUnderLine NOTIFY isUnderLineChanged FINAL)
+    Q_PROPERTY(bool isItalic READ isItalic WRITE setIsItalic NOTIFY isItalicChanged FINAL)
+    Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY isFontSizeChanged FINAL)
 
 signals:
-    void fontLoad();
+    void fontChanged();
+    void isBoldChanged();
+    void isUnderLineChanged();
+    void isItalicChanged();
+    void isFontSizeChanged();
 
 public:
-    UniFont();
-    QString getFontFamily() const { return fontFamily; }
-    bool getIsBold() const { return isBold; }
-    bool getIsUnderLine() const { return isUnderline; }
-    bool getIsItalic() const { return isItalic; }
-    int getFontSize() const { return fontSize; }
+    explicit UniFont( QObject *parent = nullptr );
+
+    Q_INVOKABLE void LoadDefault();
+    Q_INVOKABLE bool Load( const QJsonDocument &doc );
+
+    QString fontFamily() const { return m_fontFamily; }
+    bool isBold() const { return m_isBold; }
+    bool isUnderLine() const { return m_isUnderline; }
+    bool isItalic() const { return m_isItalic; }
+    int fontSize() const { return m_fontSize; }
 
     void setFontFamily( const QString value );
     void setIsBold( const bool value );
@@ -33,14 +41,13 @@ public:
     void setFontSize( const int value );
 
 private:
-    QString fontFamily;
-    bool isBold;
-    bool isUnderline;
-    bool isItalic;
-    int fontSize;
+    QString m_fontFamily;
+    bool m_isBold;
+    bool m_isUnderline;
+    bool m_isItalic;
+    int m_fontSize;
 
-    void LoadDefault();
-    bool Load(QString path);
+
 };
 
 #endif // UNIFONT_H
