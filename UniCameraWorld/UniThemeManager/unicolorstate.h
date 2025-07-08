@@ -3,13 +3,14 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QJsonDocument>
 
-class UniColorState
+class UniColorState : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
 public:
-    UniColorState();
+    explicit UniColorState( QObject *parent = nullptr );
 };
 
 #endif // UNICOLORSTATE_H

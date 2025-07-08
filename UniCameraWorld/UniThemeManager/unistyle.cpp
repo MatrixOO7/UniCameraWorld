@@ -1,6 +1,6 @@
 #include "unistyle.h"
 
-UniStyle::UniStyle( QObject *parent ) {}
+UniStyle::UniStyle( QObject *parent ) : QObject(parent) {}
 
 void UniStyle::LoadDefault() {
     m_isVisibleBorder = true;

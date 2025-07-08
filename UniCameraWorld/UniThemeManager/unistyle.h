@@ -3,8 +3,9 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QJsonDocument>
 
-class UniStyle : QObject
+class UniStyle : public QObject
 {
     Q_OBJECT
     QML_ELEMENT

@@ -3,14 +3,15 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QJsonDocument>
 
-class UniFont : QObject
+class UniFont : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
 
     Q_PROPERTY(const QString fontFamily READ fontFamily WRITE setFontFamily NOTIFY fontChanged FINAL)
-    Q_PROPERTY(bool isBold READ getIsBold WRITE isBold NOTIFY isBoldChanged FINAL)
+    Q_PROPERTY(bool isBold READ isBold WRITE setIsBold NOTIFY isBoldChanged FINAL)
     Q_PROPERTY(bool IsUnderLine READ isUnderLine WRITE setIsUnderLine NOTIFY isUnderLineChanged FINAL)
     Q_PROPERTY(bool isItalic READ isItalic WRITE setIsItalic NOTIFY isItalicChanged FINAL)
     Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY isFontSizeChanged FINAL)

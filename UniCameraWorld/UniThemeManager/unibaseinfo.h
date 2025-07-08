@@ -3,8 +3,10 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QString>
+#include <QJsonDocument>
 
-class UniBaseInfo : QObject
+class UniBaseInfo : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
@@ -12,7 +14,7 @@ class UniBaseInfo : QObject
     Q_PROPERTY(QString  name READ name WRITE setName NOTIFY nameChanged FINAL)
     Q_PROPERTY(QString version READ version WRITE setVersion NOTIFY versionChanged FINAL)
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged FINAL)
-    Q_PROPERTY(QSTRING author READ author WRITE setAuthor NOTIFY authorChanged FINAL)
+    Q_PROPERTY(QString author READ author WRITE setAuthor NOTIFY authorChanged FINAL)
 
 signals:
     void nameChanged();
@@ -27,7 +29,7 @@ public:
         Clicked,
         Disabled
     };
-    Q_ENUM_NS(States)
+    Q_ENUM(States)
 
     explicit UniBaseInfo( QObject *parent = nullptr );
 

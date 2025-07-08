@@ -1,3 +1,3 @@
 #include "unicolorstate.h"
 
-UniColorState::UniColorState() {}
+UniColorState::UniColorState( QObject *parent ) : QObject(parent) {}

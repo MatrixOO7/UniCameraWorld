@@ -1,6 +1,6 @@
 #include "unibaseinfo.h"
 
-UniBaseInfo::UniBaseInfo( QObject *parent ) {
+UniBaseInfo::UniBaseInfo( QObject *parent ) : QObject(parent) {
     LoadDefault();
 }
 

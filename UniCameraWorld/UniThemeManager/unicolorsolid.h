@@ -6,7 +6,7 @@
 #include <QColor>
 #include <QJsonDocument>
 
-class UniColorSolid : QObject
+class UniColorSolid : public QObject
 {
     Q_OBJECT
     QML_ELEMENT

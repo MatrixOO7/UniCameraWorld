@@ -1,6 +1,6 @@
 #include "unicolorsolid.h"
 
-UniColorSolid::UniColorSolid(QObject *parent) {}
+UniColorSolid::UniColorSolid(QObject *parent) : QObject(parent) {}
 
 void UniColorSolid::LoadDefault() {
 

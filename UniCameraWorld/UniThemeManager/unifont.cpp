@@ -1,6 +1,6 @@
 #include "unifont.h"
 
-UniFont::UniFont( QObject *parent ) {}
+UniFont::UniFont( QObject *parent ) : QObject(parent) {}
 
 void UniFont::LoadDefault() {
     m_fontFamily = "Arial";
