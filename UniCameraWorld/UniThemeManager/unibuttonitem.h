@@ -1,13 +1,13 @@
-#ifndef UNICOLORSTATE_H
-#define UNICOLORSTATE_H
+#ifndef UNIBUTTONITEM_H
+#define UNIBUTTONITEM_H
 
 #include <QObject>
 #include <QQmlEngine>
-#include <QJsonDocument>
+
 #include "unicolorsolid.h"
 #include "unicolorgradient.h"
 
-class UniColorState : public QObject
+class UniButtonItem : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
@@ -20,10 +20,11 @@ signals:
     void uniGradientChanged();
 
 public:
-    explicit UniColorState( QObject *parent = nullptr );
+    explicit UniButtonItem(QObject *parent = nullptr);
 
-    void setUniColor ( UniColorSolid *value );
-    void setUniGradient ( UniColorGradient *value );
+
+    void setUniColor( UniColorSolid *value );
+    void setUniGradient( UniColorGradient *value );
 
     const UniColorSolid *uniColor() const { return m_uniColor; }
     const UniColorGradient *uniGradient() const { return m_uniGradient; }
@@ -33,4 +34,4 @@ private:
     UniColorGradient *m_uniGradient;
 };
 
-#endif // UNICOLORSTATE_H
+#endif // UNIBUTTONITEM_H

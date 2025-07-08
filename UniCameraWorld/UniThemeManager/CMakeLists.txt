@@ -9,6 +9,8 @@ find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -72,6 +74,8 @@ qt_add_qml_module(uniThemeManager
         SOURCES unicolorsolid.h unicolorsolid.cpp
         SOURCES unicolorgradient.h unicolorgradient.cpp
         SOURCES unicolorstate.h unicolorstate.cpp
+        SOURCES unibuttonitem.h unibuttonitem.cpp
+        SOURCES unibutton.h unibutton.cpp
 
 )
 
@@ -79,6 +83,8 @@ target_link_libraries(uniThemeManager
     PRIVATE
     Qt6::Quick
 )
+target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
+target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
 target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
 target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
 target_link_libraries(uniThemeManager PRIVATE Qt6::Core)
