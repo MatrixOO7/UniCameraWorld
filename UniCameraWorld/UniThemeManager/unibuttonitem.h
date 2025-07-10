@@ -4,34 +4,33 @@
 #include <QObject>
 #include <QQmlEngine>
 
-#include "unicolorsolid.h"
-#include "unicolorgradient.h"
+#include "unicolorstate.h"
+#include "unifont.h"
 
 class UniButtonItem : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
 
-    Q_PROPERTY(UniColorSolid uniColor READ uniColor WRITE setUniColor NOTIFY uniColorChanged FINAL)
-    Q_PROPERTY(UniColorGradient uniGradient READ uniGradient WRITE setUniGradient NOTIFY uniGradientChanged FINAL)
+    Q_PROPERTY(UniColorState *uniColorState READ uniColorState WRITE setUniColorState NOTIFY uniColorStateChanged FINAL)
+    Q_PROPERTY(UniFont *uniFont READ uniFont WRITE setUniFont NOTIFY uniFontChanged FINAL)
 
 signals:
-    void uniColorChanged();
-    void uniGradientChanged();
+    void uniColorStateChanged();
+    void uniFontChanged();
 
 public:
-    explicit UniButtonItem(QObject *parent = nullptr);
+    explicit UniButtonItem (QObject *parent = nullptr);
 
+    void setUniColorState ( UniColorState *value );
+    void setUniFont ( UniFont *value );
 
-    void setUniColor( UniColorSolid *value );
-    void setUniGradient( UniColorGradient *value );
-
-    const UniColorSolid *uniColor() const { return m_uniColor; }
-    const UniColorGradient *uniGradient() const { return m_uniGradient; }
+    UniColorState *uniColorState () const { return m_uniColorState; }
+    UniFont *uniFont () const { return m_uniFont; }
 
 private:
-    UniColorSolid *m_uniColor;
-    UniColorGradient *m_uniGradient;
+    UniColorState *m_uniColorState;
+    UniFont *m_uniFont;
 };
 
 #endif // UNIBUTTONITEM_H

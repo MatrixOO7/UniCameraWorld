@@ -14,6 +14,8 @@
 #include <QFileInfo>
 #include <QFileInfoList>
 
+#include "unibutton.h"
+
 struct uniButtonItemTipedef {
     Q_GADGET
     QML_VALUE_TYPE(uniButtonItemTipedef)
@@ -116,6 +118,10 @@ struct uniThemeInfoTypedef {
     Q_PROPERTY(QString Author MEMBER Author)
     Q_PROPERTY(QString Path MEMBER Path)
 
+
+
+
+
 public:
     QString Name;
     QString Description;
@@ -166,6 +172,9 @@ class UniThemeManager : public QObject {
     Q_PROPERTY(uniMainWindowItemTypedef uniMainWindow READ uniMainWindow WRITE SetuniMainWindow NOTIFY uniMainWindowChanged FINAL)
     Q_PROPERTY(uniSideMenuItemTypedef uniSideMenu READ uniSideMenu WRITE SetuniSideMenu NOTIFY uniSideMenuChanged FINAL)
 
+
+    Q_PROPERTY(UniButton *testButton READ testButton WRITE setTestButton NOTIFY testButtonChanged FINAL)
+
 public:
     explicit UniThemeManager(QObject *parent = nullptr);
 
@@ -175,6 +184,9 @@ public:
     uniLabelItemTipedef uniLabel() const;
     uniMainWindowItemTypedef uniMainWindow() const;
     uniSideMenuItemTypedef uniSideMenu() const;
+
+    UniButton *testButton() const { return m_testButton; }
+    void setTestButton( UniButton *value );
 
     void SetuniButton(uniButtonItemTipedef item);
     void SetuniLabel(uniLabelItemTipedef item);
@@ -190,6 +202,8 @@ signals:
     void uniMainWindowChanged();
     void uniSideMenuChanged();
 
+    void testButtonChanged();
+
 private:
     const QString m_basePath = "UniThemeManager/";
 
@@ -197,6 +211,8 @@ private:
     uniLabelItemTipedef m_UniLabelItem;
     uniMainWindowItemTypedef m_UniMainWindowItem;
     uniSideMenuItemTypedef m_UniSideMenuItem;
+
+    UniButton *m_testButton;
 
 
 

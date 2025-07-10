@@ -1,9 +1,11 @@
 #include "unicolorsolid.h"
 
-UniColorSolid::UniColorSolid(QObject *parent) : QObject(parent) {}
+UniColorSolid::UniColorSolid(QObject *parent) : QObject(parent) {
+    LoadDefault();
+}
 
 void UniColorSolid::LoadDefault() {
-
+    m_background = QColor::fromRgba(0x70FF00FF);
 }
 
 bool UniColorSolid::Load( const QJsonDocument &doc ) {

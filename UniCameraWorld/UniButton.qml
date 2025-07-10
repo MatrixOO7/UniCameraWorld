@@ -68,8 +68,9 @@ Rectangle {
         enabled: root.enabled
 
         onEntered: {
-            root.actBackGroundColor = UniThemeManager.uniButton.HoverBackgroundColor
+            //root.actBackGroundColor = UniThemeManager.uniButton.HoverBackgroundColor
             root.textColor = UniThemeManager.uniButton.HoverTextColor
+            root.actBackGroundColor = UniThemeManager.testButton.item.uniColorState.uniColor.background
         }
 
         onExited: {

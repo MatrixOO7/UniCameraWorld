@@ -3,9 +3,12 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
+
+
 UniThemeManager::UniThemeManager(QObject *parent)
     : QObject(parent)
 {
+    m_testButton = new UniButton(this);
     InitManual();
     FindAllThemes();
 
@@ -281,4 +284,11 @@ bool UniThemeManager::Load_sideMenu( QString basePath, QString fileName ) {
         return true;
     }
     return false;
+}
+
+void UniThemeManager::setTestButton ( UniButton *value) {
+    if ( value != m_testButton ) {
+        m_testButton = value;
+        emit testButtonChanged();
+    }
 }

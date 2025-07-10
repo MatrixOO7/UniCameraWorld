@@ -3,20 +3,21 @@
 UniButtonItem::UniButtonItem(QObject *parent)
     : QObject{parent}
 {
-    m_uniColor = new UniColorSolid( this );
-    m_uniGradient = new UniColorGradient( this );
+    m_uniColorState = new UniColorState( this );
+    m_uniFont = new UniFont( this );
 }
 
-void UniButtonItem::setUniColor(UniColorSolid* value) {
-    if (value != m_uniColor && value != nullptr) {
-        m_uniColor = value;
-        emit uniColorChanged();
+void UniButtonItem::setUniColorState ( UniColorState *value ) {
+    if ( value != nullptr) {
+        m_uniColorState = value;
+        emit uniColorStateChanged();
     }
 }
 
-void UniButtonItem::setUniGradient( UniColorGradient *value ) {
-    if ( value != m_uniGradient && value != nullptr ) {
-        m_uniGradient = value;
-        emit uniGradientChanged();
+void UniButtonItem::setUniFont ( UniFont *value ) {
+    if (value != nullptr) {
+        m_uniFont = value;
+        emit uniFontChanged();
     }
 }
+
