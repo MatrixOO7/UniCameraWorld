@@ -60,12 +60,16 @@ public:
     ButtonState buttonState () const { return m_buttonState; }
     ButtonType buttonType () const { return m_buttonType; }
 
+    Q_INVOKABLE void switchState( const ButtonState state );
+
 private:
     UniBaseInfo *m_info;
     UniStyle *m_style;
     UniButtonItem *m_item;
     ButtonState m_buttonState = normal;
     ButtonType m_buttonType = unicorn;
+
+    QList<UniButtonItem*> lst_item;
 };
 
 #endif // UNIBUTTON_H
